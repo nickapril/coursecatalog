@@ -1,0 +1,30 @@
+<%= render 'layouts/header' %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @instructor.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @instructor.last_name %>
+</p>
+
+<p>
+  <strong>Official:</strong>
+  <%= @instructor.official_id %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @instructor.comment %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @instructor.email %>
+</p>
+
+<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
+<%= link_to 'Back', instructors_path %>

@@ -1,0 +1,25 @@
+<div class = "container-fluid">
+  <nav class="navbar navbar-inverse my_head">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= link_to "Course Catalog", root_url, id: "logo"%>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <%if logged_in?%>
+        <li><%= link_to "Home",  current_user %></li>
+        <li><%= link_to "Courses",  :controller => :lessons, :action => :index %></li>
+        <li><%= link_to "Subjects",  :controller => :subjects, :action => :index %></li>
+        <li><%= link_to "Instructors",  :controller => :instructors, :action => :index %></li>
+
+        <li><%= link_to "Log out", logout_path, method: "delete", class: "active" %></li>
+         
+        <% else %>
+          <li><%= link_to "Home",   root_url, class: "active" %></li>
+          <li><%= link_to "SignUp", signup_path, class:"glyphicon glyphicon-user" %></li>
+          <li><%= link_to "Login", login_path, class: "glyphicon glyphicon-log-in" %></li>
+        <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

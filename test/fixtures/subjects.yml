@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2017-03-14
+  official_id: 1
+  term: 1
+  abbreviation: MyString
+  comment: MyString
+
+two:
+  name: MyString
+  date: 2017-03-14
+  official_id: 1
+  term: 1
+  abbreviation: MyString
+  comment: MyString

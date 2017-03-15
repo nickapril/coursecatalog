@@ -1,0 +1,24 @@
+<%= render 'layouts/header' %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Courses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lessons.each do |lesson| %>
+      <tr>
+        <td><%= lesson.name %></td>
+        <td><%= lesson.code %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

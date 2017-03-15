@@ -1,0 +1,35 @@
+<%= render 'layouts/header' %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @lesson.name %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @lesson.comment %>
+</p>
+
+<p>
+  <strong>Term:</strong>
+  <%= @lesson.term %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @lesson.code %>
+</p>
+
+<p>
+  <strong>Subjects:</strong>
+  <%= @lesson.subjects %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @lesson.description %>
+</p>
+
+<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+<%= link_to 'Back', lessons_path %>

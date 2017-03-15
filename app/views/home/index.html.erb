@@ -1,0 +1,22 @@
+<%= render 'layouts/header' %>
+
+ <div class="center jumbotron home-image">
+  <div class = "container" >
+
+    <h1>Welcome to Course Catalog!</h1>
+	
+    <h2>
+      <%if !logged_in?%>
+        <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary", id: 'btn_signup' %>
+      <% end %>
+    </h2>
+  </div>
+</div>
+
+<h3> Find the Courses, Instructors and Subjects at your School </h3>
+<%if !logged_in?%>
+  <p style = "font-size: 15px"> Sign up at the link above! <p>
+  <% else %>
+   <p style = "font-size: 15px"> Use the bar at the top of the screen to navigate to Instructos, Subjects and Courses at your school.</p>
+   <p style = "font-size: 15px"> Use the "Home" button to view your profile </p>
+<% end %>

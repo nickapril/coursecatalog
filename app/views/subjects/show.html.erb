@@ -1,0 +1,35 @@
+<%= render 'layouts/header' %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @subject.name %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @subject.date %>
+</p>
+
+<p>
+  <strong>Official:</strong>
+  <%= @subject.official_id %>
+</p>
+
+<p>
+  <strong>Term:</strong>
+  <%= @subject.term %>
+</p>
+
+<p>
+  <strong>Abbreviation:</strong>
+  <%= @subject.abbreviation %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @subject.comment %>
+</p>
+
+<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Back', subjects_path %>

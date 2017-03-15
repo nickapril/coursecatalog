@@ -1,0 +1,29 @@
+<%= render 'layouts/header' %>
+<p id="notice"><%= notice %></p>
+<% provide(:title, @user.name) %>
+
+   <div class="container-fluid main-contain">
+      <div class="row">
+         <div class="col-sm-2">
+          <p>
+            <img src="http://www.hbc333.com/data/out/190/47199326-profile-pictures.png" height = "100" width = "100" />
+          </p>
+        </div>
+
+        <div class="col-sm-2 user_name">
+          <p>
+            <h3> <%=@user.name%> </h3>
+          </p>
+        </div>
+
+        <div class="col-sm-7 col-lg-9 course_appoint">
+          <p>
+            <strong>Courses</strong>
+            <ul>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
