@@ -1,0 +1,25 @@
+<%= form_for(search_path) do |f| %>
+
+	<div class="control-group">
+		<%= f.label :subject, class: 'control-group' %>
+		<div class="controls">
+			<%= collection_select( :subject, :official_id, Subject.all, :id, :name, {}, { :multiple => false}) %>
+		</div>
+	</div>
+
+
+	<div class="control-group">
+		<%= f.label "Course Name", class: 'control-label' %>
+		<div class="controls">
+			<%= text_field_tag :search, params[:search] %>
+		</div>
+	</div>
+
+
+	<div class="control-group">
+		<div class="controls">
+			<%= f.submit 'Submit', class: 'btn btn-default' %>
+		</div>
+	</div>
+
+<% end %>

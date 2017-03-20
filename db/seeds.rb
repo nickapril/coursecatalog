@@ -10,6 +10,7 @@ require 'json'
 Lesson.delete_all
 Instructor.delete_all
 Subject.delete_all
+Enrollment.delete_all
 
 # Lesson.create(name: "Algebra", comment: "Usually offered every spring", official_id: 1, term: 1, code: "cosi166", description: "Introduction to basic algebra")
 # Lesson.create(name: "Programming in Java", comment: "Usually offered every fall", official_id: 2, term: 1, code: "cosi11a", description: "Introduction to basic programming in Java")
@@ -23,10 +24,21 @@ Subject.delete_all
 # User.create(name: "Nick April", email: "nick@brandeis.edu", password:"foobar", password_confirmation: "foobar")
 # User.create(name: "Adi Berkowitz", email: "adi@brandeis.edu", password:"foobar", password_confirmation: "foobar")
 
+seed_subjects = JSON.parse(File.read('db/seed_json/subject.json'))
+seed_subjects.each do |s|
+	Subject.create(name: s["name"], term: s["term"], abbreviation: s["abbreviation"], comment: s["comment"], official_id: s["id"])
+end
+
 
 seed_courses = JSON.parse(File.read('db/seed_json/course.json'))
 seed_courses.each do |c|
-  Lesson.create(name: c["name"], official_id: c["id"], code: c["code"], comment: c["comment"], term: c["term"])
+  lesson = Lesson.create(name: c["name"], code: c["code"], independent_study: c["independent_study"], requirements: c["requirements"])
+  c['subjects'].each do |subjectHash|
+	subject_id = subjectHash['id']
+	subject = Subject.find_by(official_id: subject_id)
+	LessonSubject.create(lesson_id: lesson.id, subject_id: subject.id) if !subject.nil?
+  end	
+
 end
 
 seed_instructors = JSON.parse(File.read('db/seed_json/instructor.json'))
@@ -34,8 +46,12 @@ seed_instructors.each do |i|
 	Instructor.create(first_name: i["first"], last_name: i["last"], email: i["email"], comment: i["comment"], official_id: i["id"])
 end
 
-seed_subjects = JSON.parse(File.read('db/seed_json/subject.json'))
-seed_subjects.each do |s|
-	Subject.create(name: s["name"], term: s["term"], abbreviation: s["abbreviation"], comment: s["comment"], official_id: s["id"])
-end
+User.create(id: 1, name: "Nick April", email: "nick@brandeis.edu", password:"foobar", password_confirmation: "foobar")
+# 2nd user
+User.create(id: 2, name: "Adi Berkowitz", email: "adi@brandeis.edu", password:"foobar", password_confirmation: "foobar")
 
+# create fake enrollments
+Enrollment.create(user_id: 1, lesson_id: 2)
+Enrollment.create(user_id: 2, lesson_id: 2)
+Enrollment.create(user_id: 1, lesson_id: 3)
+Enrollment.create(user_id: 2, lesson_id: 3)
