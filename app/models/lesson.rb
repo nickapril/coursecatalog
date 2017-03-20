@@ -7,13 +7,9 @@ class Lesson < ApplicationRecord
   has_many :lesson_subjects
   has_many :subjects, through: :lesson_subjects
 
-  def self.search(query_hash)
-  	result = all
-  	result = result.where("name like ?", "%#{query_hash[:name]}%") if query_hash[:name]
-  	result = result.where("subject like ?", "%#{query_hash[:subject]}%") if query_hash[:subject]
-  	result
+  def self.search(search)
+	Lesson.where(Lesson.arel_table[:name].matches("%#{search}%"))
+	#where("name ILIKE ?", "%#{search}%")
   end
 
 end
-
-#	where("name ILIKE ?", "%#{search}%") 
