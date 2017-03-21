@@ -27,14 +27,13 @@ Rails.application.routes.draw do
 
   get '/subjects', 		to: 'subjects#index'
 
-  
-  get 'enrollment/index'
+  get 'enrollments/index'
 
-  get 'enrollment/new'
+  get 'enrollments/new'
 
   get 'enrollment/edit'
 
-  post 'enrollment/create'
+  get 'enrollments/create'
 
   get 'enrollment/update'
 

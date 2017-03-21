@@ -2,7 +2,7 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments
   # GET /enrollments.json
   def index
-    @enrollment = Enrollment.find(params[:id])
+    @enrollments = Enrollment.find(params[:id])
   end
 
   # GET /enrollments/1
@@ -12,7 +12,7 @@ class EnrollmentsController < ApplicationController
 
   # GET /enrollments/new
   def new
-    @enrollment = Enrollment.new
+    @enrollments = Enrollment.new
   end
 
   # GET /enrollments/1/edit
@@ -22,15 +22,15 @@ class EnrollmentsController < ApplicationController
   # POST /enrollments
   # POST /enrollments.json
   def create
-    @enrollment = Enrollment.new(enrollment_params)
+    @enrollments = Enrollment.new(enrollment_params)
 
     respond_to do |format|
-      if @enrollment.save
+      if @enrollments.save
         format.html { redirect_to home_index_path, notice: 'Enrollment was successfully created.' }
-        format.json { render :show, status: :created, location: @enrollment }
+        format.json { render :show, status: :created, location: @enrollments }
       else
         format.html { render :new }
-        format.json { render json: @enrollment.errors, status: :unprocessable_entity }
+        format.json { render json: @enrollments.errors, status: :unprocessable_entity }
       end
     end
 
@@ -47,8 +47,8 @@ class EnrollmentsController < ApplicationController
   end
 
   private
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the internet
     def enrollment_params
-      params.require(:enrollment).permit(:user_id, :course_id)
+      params.require(:enrollments).permit(:user_id, :lesson_id)
     end
 end

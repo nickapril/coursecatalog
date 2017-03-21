@@ -25,7 +25,7 @@
 	        <td><%= lesson.independent_study %></td>
 	        <td><%= lesson.requirements %></td>
 	        <% if !Enrollment.where(user_id: current_user.id, lesson_id: lesson.id).exists? %>
-		        <td><%= form_for(:enrollment, :url => url_for(:controller => "enrollment", :action => "create", :id => @enrollment)) do |f|%>
+		        <td><%= form_for(:enrollments, :url => url_for(:controller => "enrollments", :action => "create", :id => @enrollment)) do |f|%>
 		        	<%= f.hidden_field :user_id, value: current_user.id %>
 		        	<%= f.hidden_field :lesson_id, value: lesson.id %>
 	    			<%= f.submit 'Enroll' %>

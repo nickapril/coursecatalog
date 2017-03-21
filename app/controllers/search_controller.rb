@@ -9,7 +9,6 @@ class SearchController < ApplicationController
     end
 
     @subjects = Subject.all.order(:name)
-
   end
 
   # GET /lessons/1
@@ -27,3 +26,4 @@ class SearchController < ApplicationController
   end
 
 end
+

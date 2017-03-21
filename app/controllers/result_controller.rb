@@ -9,5 +9,7 @@ class ResultController < ApplicationController
 
     @subjects = Subject.all.order(:name)
 
+    @enrollment = Enrollment.create
+
   end
 end
