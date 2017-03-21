@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Course</title>
-    <%= csrf_meta_tags %>
+  <%= render 'layouts/header' %>
+  <div class="container">
+    <head>
+      <title>Course Catalog</title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= csrf_meta_tags %>
+      <%= action_cable_meta_tag %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    </head>
 
-  <body>
-   
- <div class="container">
+    <body>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <%= yield %>
- 
-    </div>
-  </body>
+    </body>
+  </div>
+  <%= render 'layouts/footer' %>
 </html>

@@ -1,44 +1,42 @@
-<%= render 'layouts/header' %>
-
 <h1> Search Results </h1>
 
 <%= link_to 'Back to Search Page', search_index_path %></br >
 
 <% if @lessons.blank? %>
-	No Results Found.
+  No Results Found.
 <% else %>
-	<table>
-	  <thead>
+  <table>
+    <thead>
+      <tr>
+        <th>Name </th>
+        <th>Code</th>
+        <th>Independent Study</th>
+        <th></th>
+        <th>Requirements</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+    <tbody>
+	  <% @lessons = @lessons.uniq %>
+	  <% @lessons.each do |lesson| %>
 	    <tr>
-	      <th>Name </th>
-	      <th>Code</th>
-	      <th>Independent Study</th>
-	      <th></th>
-	      <th>Requirements</th>
-	      <th colspan="4"></th>
+	      <td><%= lesson.name %></td>
+	      <td><%= lesson.code %></td>
+	      <td><%= lesson.independent_study %></td>
+	      <td></td>
+	      <td><%= lesson.requirements %></td>
+	      <% if !Enrollment.where(user_id: current_user.id, lesson_id: lesson.id).exists? %>
+		      <td><%= form_for(:enrollments, :url => url_for(:controller => "enrollments", :action => "create", :id => @enrollments)) do |f|%>
+		     	<%= f.hidden_field :user_id, value: current_user.id %>
+		      	<%= f.hidden_field :lesson_id, value: lesson.id %>
+		       	<button type="submit" class="btn btn-primary"> Enroll</button>
+	 		  <% end %>
+			  </td>
+		  <% else %>
+			<td> Enrolled </td>
+		  <% end %>
 	    </tr>
-	  </thead>
-	  <tbody>
-	  	<% @lessons = @lessons.uniq %>
-	    <% @lessons.each do |lesson| %>
-	      <tr>
-	        <td><%= lesson.name %></td>
-	        <td><%= lesson.code %></td>
-	        <td><%= lesson.independent_study %></td>
-	        <td></td>
-	        <td><%= lesson.requirements %></td>
-	        <% if !Enrollment.where(user_id: current_user.id, lesson_id: lesson.id).exists? %>
-		        <td><%= form_for(:enrollments, :url => url_for(:controller => "enrollments", :action => "create", :id => @enrollments)) do |f|%>
-		        	<%= f.hidden_field :user_id, value: current_user.id %>
-		        	<%= f.hidden_field :lesson_id, value: lesson.id %>
-		        	<button type="submit" class="btn btn-primary"> Enroll</button>
-					<% end %>
-				</td>
-			<% else %>
-				<td> Enrolled </td>
-			<% end %>
-	      </tr>
-	    <% end %>
-	  </tbody>
-	</table>
+	  <% end %>
+	</tbody>
+  </table>
 <% end %>
