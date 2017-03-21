@@ -1,5 +1,4 @@
 class Lesson < ApplicationRecord
-  serialize :subjects, JSON
 
   has_many :enrollments
   has_many :users, through: :enrollments

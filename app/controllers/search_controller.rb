@@ -1,8 +1,9 @@
 class SearchController < ApplicationController
 
   def index
-    if !params[:subject].blank?
+    if !params[:subject].blank? && params[:search].blank?
       @lessons = Subject.find(params[:subject]).lessons
+    elsif !params[:search].blank? && params[:subject].blank?
       @lessons = @lessons.search(params[:search]).order(:name)
     else 
       @lessons = Lesson.search(params[:search]).order(:name)
