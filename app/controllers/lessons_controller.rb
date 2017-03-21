@@ -16,10 +16,6 @@ class LessonsController < ApplicationController
   def new
   end
 
-  # GET /lessons/1/edit
-  def edit
-  end
-
   # POST /lessons
   # POST /lessons.json
   def create
@@ -34,16 +30,6 @@ class LessonsController < ApplicationController
         format.json { render json: @lesson.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  # PATCH/PUT /lessons/1
-  # PATCH/PUT /lessons/1.json
-  def update
-  end
-
-  # DELETE /lessons/1
-  # DELETE /lessons/1.json
-  def destroy
   end
 
 end

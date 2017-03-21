@@ -17,10 +17,6 @@ class LessonSubjectsController < ApplicationController
     @lesson_subject = LessonSubject.new
   end
 
-  # GET /lesson_subjects/1/edit
-  def edit
-  end
-
   # POST /lesson_subjects
   # POST /lesson_subjects.json
   def create
@@ -34,30 +30,6 @@ class LessonSubjectsController < ApplicationController
         format.html { render :new }
         format.json { render json: @lesson_subject.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /lesson_subjects/1
-  # PATCH/PUT /lesson_subjects/1.json
-  def update
-    respond_to do |format|
-      if @lesson_subject.update(lesson_subject_params)
-        format.html { redirect_to @lesson_subject, notice: 'Lesson subject was successfully updated.' }
-        format.json { render :show, status: :ok, location: @lesson_subject }
-      else
-        format.html { render :edit }
-        format.json { render json: @lesson_subject.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /lesson_subjects/1
-  # DELETE /lesson_subjects/1.json
-  def destroy
-    @lesson_subject.destroy
-    respond_to do |format|
-      format.html { redirect_to lesson_subjects_url, notice: 'Lesson subject was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

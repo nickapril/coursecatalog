@@ -15,10 +15,6 @@ class EnrollmentsController < ApplicationController
     @enrollments = Enrollment.new
   end
 
-  # GET /enrollments/1/edit
-  def edit
-  end
-
   # POST /enrollments
   # POST /enrollments.json
   def create
@@ -34,16 +30,6 @@ class EnrollmentsController < ApplicationController
       end
     end
 
-  end
-
-  # PATCH/PUT /enrollments/1
-  # PATCH/PUT /enrollments/1.json
-  def update
-  end
-
-  # DELETE /enrollments/1
-  # DELETE /enrollments/1.json
-  def destroy
   end
 
   private

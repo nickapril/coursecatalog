@@ -17,9 +17,6 @@ class InstructorsController < ApplicationController
     @instructor = Instructor.new
   end
 
-  # GET /instructors/1/edit
-  def edit
-  end
 
   # POST /instructors
   # POST /instructors.json
@@ -34,30 +31,6 @@ class InstructorsController < ApplicationController
         format.html { render :new }
         format.json { render json: @instructor.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /instructors/1
-  # PATCH/PUT /instructors/1.json
-  def update
-    respond_to do |format|
-      if @instructor.update(instructor_params)
-        format.html { redirect_to @instructor, notice: 'Instructor was successfully updated.' }
-        format.json { render :show, status: :ok, location: @instructor }
-      else
-        format.html { render :edit }
-        format.json { render json: @instructor.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /instructors/1
-  # DELETE /instructors/1.json
-  def destroy
-    @instructor.destroy
-    respond_to do |format|
-      format.html { redirect_to instructors_url, notice: 'Instructor was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
