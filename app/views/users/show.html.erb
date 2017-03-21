@@ -13,13 +13,17 @@
         <div class="col-sm-2 user_name">
           <p>
             <h3> <%=@user.name%> </h3>
+            <p>Email: <%= current_user.email %></p>
           </p>
         </div>
 
         <div class="col-sm-7 col-lg-9 course_appoint">
           <p>
-            <strong>Courses</strong>
+            <h3> Courses Enrolled in </h3>
             <ul>
+              <% current_user.lessons.each do |lesson| %>
+                <li><%= lesson.name %></li>
+              <% end %>
             </ul>
           </p>
         </div>

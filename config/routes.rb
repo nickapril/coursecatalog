@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   get 'enrollments/create'
 
+  post 'enrollments/create'
+
   get 'enrollment/update'
 
   get 'enrollment/destroy'

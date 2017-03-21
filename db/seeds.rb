@@ -11,6 +11,7 @@ Lesson.delete_all
 Instructor.delete_all
 Subject.delete_all
 Enrollment.delete_all
+LessonSubject.delete_all
 
 # Lesson.create(name: "Algebra", comment: "Usually offered every spring", official_id: 1, term: 1, code: "cosi166", description: "Introduction to basic algebra")
 # Lesson.create(name: "Programming in Java", comment: "Usually offered every fall", official_id: 2, term: 1, code: "cosi11a", description: "Introduction to basic programming in Java")

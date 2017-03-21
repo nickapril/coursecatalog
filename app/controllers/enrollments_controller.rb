@@ -26,7 +26,7 @@ class EnrollmentsController < ApplicationController
 
     respond_to do |format|
       if @enrollments.save
-        format.html { redirect_to home_index_path, notice: 'Enrollment was successfully created.' }
+        format.html { redirect_to current_user, notice: 'Enrollment was successfully created.' }
         format.json { render :show, status: :created, location: @enrollments }
       else
         format.html { render :new }
