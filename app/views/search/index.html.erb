@@ -1,10 +1,21 @@
-<%= form_tag(result_index_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Courses" %>
-	<%= select_tag :subject, options_from_collection_for_select(@subjects, "id", "name"), include_blank: true%>
-    <%= submit_tag "Search", :name => nil, class: "btn btn-success" %>
-<% end %>
 
+<div class="row-lg-12">
+	<div class="col-sm-6">
 
+	  <%= form_tag(search_index_path, :method => "get", id: "search-form", remote: true) do %>
+	    
+	    <%= select_tag :subject, options_from_collection_for_select(@subjects, "id", "name"), include_blank: true, class: "form-control", onkeyup: "$('#search-form').submit();"%>
+	    
+	    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Courses", onkeyup: "$('#search-form').submit();" %>
+	    
+	    <%= submit_tag "Search", :name => nil, class: "btn btn-success" %>
+	  
+	  <% end %>
 
+	</div>
+</div>
+<div id = "results">
+  <%= render "results" %>
+</div>
 
-
+<!-- onekeyup? -->

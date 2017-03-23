@@ -22,6 +22,8 @@ class EnrollmentsController < ApplicationController
 
     respond_to do |format|
       if @enrollments.save
+
+        # If I add ", notice: 'Enrollment was successfully created.'" to this line two copies of the enrollment success message show
         format.html { redirect_to current_user }
         format.json { render :show, status: :created, location: @enrollments }
       else
