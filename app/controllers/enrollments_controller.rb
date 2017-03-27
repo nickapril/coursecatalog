@@ -1,22 +1,16 @@
 class EnrollmentsController < ApplicationController
-  # GET /enrollments
-  # GET /enrollments.json
+
   def index
     @enrollments = Enrollment.find(params[:id])
   end
 
-  # GET /enrollments/1
-  # GET /enrollments/1.json
   def show
   end
 
-  # GET /enrollments/new
   def new
     @enrollments = Enrollment.new
   end
 
-  # POST /enrollments
-  # POST /enrollments.json
   def create
     @enrollments = Enrollment.new(enrollment_params)
 
@@ -24,7 +18,7 @@ class EnrollmentsController < ApplicationController
       if @enrollments.save
 
         # If I add ", notice: 'Enrollment was successfully created.'" to this line two copies of the enrollment success message show
-        format.html { redirect_to current_user }
+        format.html { redirect_to current_user, notice: 'Enrollment was successfully created.'}
         format.json { render :show, status: :created, location: @enrollments }
       else
         format.html { render :new }
