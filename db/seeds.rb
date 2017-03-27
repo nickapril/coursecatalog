@@ -36,7 +36,8 @@ seed_courses.each do |c|
   code = c['code']
   independent_study = c['independent_study']
   requirements = c['requirements']
-  lesson = Lesson.create(name: name, code: code, independent_study: independent_study, requirements: requirements)
+  description = c['description']
+  lesson = Lesson.create(name: name, code: code, independent_study: independent_study, requirements: requirements, description: description)
 
   c['subjects'].each do |subjectHash|
 	subject_id = subjectHash['id']

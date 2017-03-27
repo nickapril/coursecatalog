@@ -4,7 +4,12 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.all
+
+    if logged_in?
+      @lessons = Lesson.all
+    else
+      redirect_to root_url, notice: 'LOGIN OR SIGNUP TO CONTINUE'
+    end
   end
 
   # GET /lessons/1

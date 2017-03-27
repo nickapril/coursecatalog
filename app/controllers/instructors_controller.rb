@@ -4,7 +4,11 @@ class InstructorsController < ApplicationController
   # GET /instructors
   # GET /instructors.json
   def index
-    @instructors = Instructor.all
+    if logged_in?
+      @instructors = Instructor.all
+    else
+      redirect_to root_url, notice: 'LOGIN OR SIGNUP TO CONTINUE'
+    end
   end
 
   # GET /instructors/1
